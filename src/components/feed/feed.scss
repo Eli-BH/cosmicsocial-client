@@ -1,0 +1,16 @@
+@import "../../sass/colors";
+
+.feed {
+  background-color: $dark;
+  flex: 6;
+  height: 100vh;
+  .feedWrapper {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1290px) {
+  .feed {
+    flex: 2;
+  }
+}
