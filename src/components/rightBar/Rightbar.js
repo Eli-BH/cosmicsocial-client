@@ -53,8 +53,128 @@ const Rightbar = () => {
           </div>
         </div>
 
-        <h4 className="rightBarTitle">User friends</h4>
+        <h4 className="rightBarTitle">Users friends</h4>
         <div className="rightbarFollowings">
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="https://source.unsplash.com/random"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Tony Stark</span>
+          </div>
           <div className="rightbarFollowing">
             <img
               src="https://source.unsplash.com/random"

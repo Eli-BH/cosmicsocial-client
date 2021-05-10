@@ -1,0 +1,35 @@
+@import "../../sass/colors";
+.bottomBar {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .bottomBar {
+    display: flex;
+    width: 100vw;
+    height: 70px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: $dark;
+    border-top: solid 2px $mid;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .bottomBarIcon {
+      color: $light;
+      font-size: 42px;
+
+      padding: 5px;
+      border-radius: 50%;
+      background-color: rgba(57, 209, 246, 0.034);
+      transition: background-color 0.1s ease;
+
+      &:active {
+        background-color: $mid;
+        color: $dark;
+      }
+    }
+  }
+}

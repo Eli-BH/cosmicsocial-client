@@ -1,70 +1,41 @@
 import React from "react";
-import { Telegram } from "@material-ui/icons";
+import {
+  Chat,
+  Explore,
+  Face,
+  Home,
+  NotificationsActive,
+} from "@material-ui/icons";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
+        <img
+          src="https://i.imgur.com/WtQloZa.png"
+          alt="CosmicSocial Logo"
+          className="sidebarLogo"
+        />
         <ul className="sidebarList">
           <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
+            <Home className="sidebarIcon" />
+            <span className="sidebarListItemText">Home</span>
           </li>
           <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
+            <Explore className="sidebarIcon" />
+            <span className="sidebarListItemText">Explore</span>
           </li>
           <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
+            <NotificationsActive className="sidebarIcon" />
+            <span className="sidebarListItemText">Notifications</span>
           </li>
           <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
+            <Chat className="sidebarIcon" />
+            <span className="sidebarListItemText">Chat</span>
           </li>
           <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
-          </li>
-          <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
-          </li>
-          <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
-          </li>
-          <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
-          </li>
-          <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
-          </li>
-          <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
-          </li>
-          <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
-          </li>
-          <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
-          </li>
-          <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
-          </li>
-          <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
-          </li>
-          <li className="sidebarListItem">
-            <Telegram className="sidebarIcon" />
-            <span className="sidebarListItemText">Text</span>
+            <Face className="sidebarIcon" />
+            <span className="sidebarListItemText">Profile</span>
           </li>
         </ul>
         <hr className="sidebarHr" />

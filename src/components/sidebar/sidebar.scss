@@ -2,11 +2,13 @@
 .sidebar {
   flex: 3;
   width: 100%;
-  height: 100vh;
+
   overflow-y: scroll;
   position: sticky;
   top: 50px;
   background-color: $dark;
+  color: $light;
+  font-family: "Roboto", sans-serif;
 
   &::-webkit-scrollbar {
     width: 1px;
@@ -21,16 +23,32 @@
 
   .sidebarWrapper {
     padding: 20px;
+    height: 100%;
 
     .sidebarList {
       padding: 0;
-      margin: 0;
+      margin-left: 40px;
+
       list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
       .sidebarListItem {
         display: flex;
         align-items: center;
-        margin-bottom: 20px;
-        justify-content: center;
+        margin: 25px 0;
+        padding: 15px;
+        border-radius: 15px;
+        justify-content: flex-start;
+        font-weight: 600;
+        font-size: 32px;
+        transition: background-color 0.4s, color 0.4s;
+
+        &:hover {
+          color: $dark;
+          background-color: $mid;
+          cursor: pointer;
+        }
         .sidebarIcon {
           margin-right: 15px;
         }
@@ -39,6 +57,24 @@
     .sidebarHr {
       margin: 20px 0;
       border-top: 1px solid $mid;
+    }
+    .sidebarButton {
+      padding: 10px;
+      width: 100%;
+      background-color: $danger;
+      border-radius: 15px;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+      color: $light;
+      font-size: 20px;
+      box-shadow: 1px 1px 8px rgba(218, 218, 218, 0.281);
+      &:hover {
+        transform: scale(0.98);
+      }
+      &:focus {
+        outline: none;
+      }
     }
   }
 }
