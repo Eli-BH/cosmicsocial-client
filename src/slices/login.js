@@ -20,7 +20,7 @@ const authLoginSlice = createSlice({
       state.loading = false;
       state.hasError = false;
       state.authData = payload;
-      localStorage.setItem("userId", JSON.stringify(payload));
+      localStorage.setItem("userId", state.authData);
     },
     loginFailure: (state) => {
       state.loading = false;

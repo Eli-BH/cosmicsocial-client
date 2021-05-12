@@ -5,6 +5,7 @@ import HomePage from "./pages/home/HomePage";
 import Login from "./pages/login/Login";
 import RegisterPage from "./pages/register/RegisterPage";
 import ProfilePage from "./pages/profile/ProfilePage";
+import ExplorePage from "./pages/explore/ExplorePage";
 
 const App = () => {
   return (
@@ -22,6 +23,9 @@ const App = () => {
           </Route>
           <Route path="/profile/:id">
             <ProfilePage />
+          </Route>
+          <Route path="/explore">
+            <ExplorePage />
           </Route>
         </Switch>
       </Router>
