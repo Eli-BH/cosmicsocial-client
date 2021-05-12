@@ -1,6 +1,45 @@
 import "./register.scss";
+import { useRef } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { authRegister, authRegisterSelector } from "../../slices/register";
+import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
+  const dispatch = useDispatch();
+  const { authData } = useSelector(authRegisterSelector);
+
+  const email = useRef();
+  const firstName = useRef();
+  const lastName = useRef();
+  const username = useRef();
+  const password = useRef();
+  const confirmPassword = useRef();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password.current.value === confirmPassword.current.value) {
+      try {
+        const formData = {
+          firstName: firstName.current.value,
+          lastName: lastName.current.value,
+          username: username.current.value,
+          email: email.current.value,
+          password: password.current.value,
+        };
+
+        dispatch(authRegister(formData));
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      password.current.setCustomValidity("Passwords do not match!");
+    }
+  };
+
+  console.log(authData);
+
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -23,12 +62,13 @@ const RegisterPage = () => {
         </div>
 
         <div className="loginRight">
-          <form className="loginBox">
+          <form className="loginBox" onSubmit={handleSubmit}>
             <div className="loginName">
               <input
                 type="text"
                 placeholder="First Name"
                 className="loginInput"
+                ref={firstName}
                 required
               />
               <input
@@ -36,6 +76,7 @@ const RegisterPage = () => {
                 placeholder="Last Name"
                 className="loginInput"
                 required
+                ref={lastName}
               />
             </div>
 
@@ -44,12 +85,14 @@ const RegisterPage = () => {
               placeholder="Username"
               className="loginInput"
               required
+              ref={username}
             />
             <input
               type="email"
               placeholder="Email"
               required
               className="loginInput"
+              ref={email}
             />
             <input
               type="password"
@@ -57,20 +100,24 @@ const RegisterPage = () => {
               required
               minLength="6"
               className="loginInput"
+              ref={password}
             />
             <input
               type="password"
               placeholder="Confirm password"
               required
-              minLength="6"
               className="loginInput"
+              ref={confirmPassword}
             />
             <button type="submit" className="loginButton">
-              Login
+              Register
             </button>
-            <button className="loginRegisterButton">
-              Create a New Account
-            </button>
+
+            <Link to="/login">
+              <button className="loginRegisterButton">
+                Login into your account
+              </button>
+            </Link>
           </form>
         </div>
       </div>

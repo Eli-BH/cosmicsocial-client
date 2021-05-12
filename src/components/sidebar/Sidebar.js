@@ -1,11 +1,6 @@
-import React from "react";
-import {
-  Chat,
-  Explore,
-  Face,
-  Home,
-  NotificationsActive,
-} from "@material-ui/icons";
+import "./sidebar.scss";
+import { Chat, Explore, Face, Grade, Home, Search } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -18,16 +13,28 @@ const Sidebar = () => {
         />
         <ul className="sidebarList">
           <li className="sidebarListItem">
-            <Home className="sidebarIcon" />
-            <span className="sidebarListItemText">Home</span>
+            <Link to="/" className="listLink">
+              <Home className="sidebarIcon" />
+              <span
+                className="sidebarListItemText"
+                style={{ textDecoration: "none" }}
+              >
+                Home
+              </span>
+            </Link>
           </li>
+
           <li className="sidebarListItem">
             <Explore className="sidebarIcon" />
             <span className="sidebarListItemText">Explore</span>
           </li>
           <li className="sidebarListItem">
-            <NotificationsActive className="sidebarIcon" />
-            <span className="sidebarListItemText">Notifications</span>
+            <Search className="sidebarIcon" />
+            <span className="sidebarListItemText">Search</span>
+          </li>
+          <li className="sidebarListItem">
+            <Grade className="sidebarIcon" />
+            <span className="sidebarListItemText">Liked Posts</span>
           </li>
           <li className="sidebarListItem">
             <Chat className="sidebarIcon" />

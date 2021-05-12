@@ -1,4 +1,4 @@
-import { ArrowUpward, MoreVert } from "@material-ui/icons";
+import { Grade, MoreVert } from "@material-ui/icons";
 import "./post.scss";
 const Post = () => {
   return (
@@ -32,7 +32,7 @@ const Post = () => {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <ArrowUpward className="likeIcon" />
+            <Grade className="likeIcon" />
           </div>
           <span className="postLikeCounter"> 5 people like it</span>
           <div className="postBottomRight">

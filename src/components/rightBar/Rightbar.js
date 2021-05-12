@@ -6,16 +6,16 @@ const Rightbar = () => {
     return (
       <>
         <div className="birthdayContainer">
-          <img src="" alt="" className="birthdayImg" />
+          <img
+            src="http://source.unsplash.com/random"
+            alt=""
+            className="birthdayImg"
+          />
           <span className="birthdayText">
             <b>Peter Parker</b> and <b>3 other friends</b> have birthdays today.
           </span>
         </div>
-        <img
-          src="https://source.unsplash.com/random"
-          alt=""
-          className="rightbarAd"
-        />
+
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendsList">
           <li>Guy</li>
@@ -191,8 +191,8 @@ const Rightbar = () => {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {/* <HomeRightbar /> */}
-        <ProfileRightBar />
+        <HomeRightbar />
+        {/* <ProfileRightBar /> */}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@
   background-color: $dark;
   flex: 6;
   height: 100vh;
+
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 1px;
@@ -24,5 +25,10 @@
 @media (max-width: 1290px) {
   .feed {
     flex: 2;
+
+    .feedWrapper {
+      padding: 20px;
+      width: 100%;
+    }
   }
 }

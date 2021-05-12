@@ -2,7 +2,6 @@
 .sidebar {
   flex: 3;
   width: 100%;
-
   overflow-y: scroll;
   position: sticky;
   top: 50px;
@@ -25,6 +24,9 @@
     padding: 20px;
     height: 100%;
 
+    .sidebarLogo {
+      width: 50%;
+    }
     .sidebarList {
       padding: 0;
       margin-left: 40px;
@@ -43,7 +45,13 @@
         font-weight: 600;
         font-size: 32px;
         transition: background-color 0.4s, color 0.4s;
+        .listLink {
+          text-decoration: none;
+        }
 
+        .sidebarListItemText {
+          color: $light;
+        }
         &:hover {
           color: $dark;
           background-color: $mid;
@@ -51,6 +59,7 @@
         }
         .sidebarIcon {
           margin-right: 15px;
+          color: $light;
         }
       }
     }
@@ -83,6 +92,15 @@
   .sidebar {
     flex: 0.5;
     width: 400px;
+    .sidebarWrapper {
+      .sidebarLogo {
+        width: 100%;
+      }
+    }
+  }
+
+  .sidebarListItemText {
+    display: none;
   }
 
   .sidebarListItemText {

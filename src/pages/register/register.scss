@@ -50,7 +50,7 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     border: 2px solid $mid;
     .loginInput {
       height: 50px;
@@ -89,12 +89,13 @@
       }
     }
     .loginRegisterButton {
-      width: 60%;
+      width: 100%;
+      margin-left: auto;
       align-self: center;
-      height: 50px;
+      height: 40px;
       border-radius: 10px;
       border: none;
-      background-color: #42b72a;
+      background-color: $danger;
       color: $light;
       font-size: 20px;
       font-weight: 500;

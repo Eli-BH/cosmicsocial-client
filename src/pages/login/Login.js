@@ -1,6 +1,37 @@
 import "./login.scss";
 
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { authLogin, authLoginSelector } from "../../slices/login";
+import { Link } from "react-router-dom";
+
 function Login() {
+  const email = useRef();
+  const password = useRef();
+  const dispatch = useDispatch();
+
+  const { authData } = useSelector(authLoginSelector);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const loginInfo = {
+      email: email.current.value,
+      password: password.current.value,
+    };
+
+    const sendUserData = async () => {
+      try {
+        dispatch(authLogin(loginInfo));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    sendUserData();
+
+    email.current.value = "";
+    password.current.value = "";
+  };
+  console.log(authData);
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -23,26 +54,29 @@ function Login() {
         </div>
 
         <div className="loginRight">
-          <form className="loginBox">
+          <form onSubmit={handleSubmit} className="loginBox">
             <input
               type="email"
               placeholder="Email"
               required
               className="loginInput"
+              ref={email}
             />
             <input
               type="password"
               placeholder="Password"
               required
-              minLength="6"
               className="loginInput"
+              ref={password}
             />
             <button type="submit" className="loginButton">
               Login
             </button>
-            <button className="loginRegisterButton">
-              Create a New Account
-            </button>
+            <Link to="/register">
+              <button className="loginRegisterButton">
+                Create a New Account
+              </button>
+            </Link>
           </form>
         </div>
       </div>

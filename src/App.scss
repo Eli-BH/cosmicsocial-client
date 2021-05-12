@@ -5,11 +5,16 @@
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
 @import "./pages/login/login.scss";
 @import "./pages/register/register.scss";
 @import "./pages/home/home.scss";
+@import "./pages/profile/profile.scss";
+
 @import "./components//feed/feed.scss";
 @import "./components/rightBar/rightbar.scss";
 @import "./components/sidebar/sidebar.scss";
 @import "./components/bottombar/bottombar.scss";
 @import "./components/post/post.scss";
+@import "./components/mobilesidebar/mobileSidebar.scss";
+@import "./components/share/share.scss";

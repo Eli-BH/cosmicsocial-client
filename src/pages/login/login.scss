@@ -42,7 +42,8 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    width: 100%;
     .loginInput {
       height: 50px;
       border-radius: 10px;
@@ -69,8 +70,13 @@
         transform: scale(0.98);
       }
     }
+
     .loginRegisterButton {
-      width: 60%;
+      width: 100%;
+      margin-left: auto;
+      align-self: center;
+      height: 40px;
+      border-radius: 10px;
       align-self: center;
       height: 50px;
       border-radius: 10px;
