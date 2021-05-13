@@ -1,18 +1,18 @@
 import "./share.scss";
 import axios from "axios";
 import { EmojiEmotions, Label, PermMedia, Room } from "@material-ui/icons";
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useSelector } from "react-redux";
+import { getUserDataSelector } from "../../slices/user";
 
 const Share = () => {
-  const [currentUser, setCurrentUser] = useState(
-    localStorage.getItem("userId")
-  );
+  const { userData } = useSelector(getUserDataSelector);
 
   const text = useRef();
 
   const handleSubmit = (e) => {
     const newPost = {
-      userId: currentUser,
+      userId: userData._id,
       text: text.current.value,
     };
 
@@ -39,8 +39,8 @@ const Share = () => {
       <div className="shareWrapper">
         <div className="shareTop">
           <img
-            src="https://source.unsplash.com/random"
-            alt=""
+            src={userData.profilePicture}
+            alt={userData.username}
             className="shareProfileImg"
           />
           <textarea

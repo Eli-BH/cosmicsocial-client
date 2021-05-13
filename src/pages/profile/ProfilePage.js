@@ -6,16 +6,45 @@ import Rightbar from "../../components/rightBar/Rightbar";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
-import { getUserDataSelector } from "../../slices/user";
 
 const ProfilePage = () => {
-  const [user, setUser] = useState({});
-  const userId = useParams().id;
+  const [postArr, setPostArr] = useState([]);
+  const [curUserData, setCurUserData] = useState({});
+  const curUser = useParams().id;
 
-  const { userData, loading } = useSelector(getUserDataSelector);
+  console.log(curUser);
 
-  return user ? (
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const res = await axios(
+          "http://localhost:3001/api/posts/profile/" + curUser
+        );
+
+        setPostArr(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getPosts();
+  }, [curUser]);
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const { data } = await axios(
+          `http://localhost:3001/api/users?userId=${curUser}`
+        );
+        setCurUserData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUserData();
+  }, [curUser]);
+
+  return curUserData ? (
     <div className="profile">
       <Sidebar />
       <div className="profileRight">
@@ -23,24 +52,24 @@ const ProfilePage = () => {
           <div className="profileCover">
             <img
               className="profileCoverImg"
-              src={userData?.coverPicture}
+              src={curUserData?.coverPicture}
               alt=""
             />
             <img
               className="profileUserImg"
-              src={userData?.profilePicture}
+              src={curUserData?.profilePicture}
               alt=""
             />
           </div>
 
           <div className="profileInfo">
-            <h4 className="profileInfoName">{userData?.username}</h4>
-            <h4 className="profileInfoDesc">{userData?.desc}</h4>
+            <h4 className="profileInfoName">{curUserData?.username}</h4>
+            <h4 className="profileInfoDesc">{curUserData?.desc}</h4>
           </div>
         </div>
         <div className="profileRightBottom">
-          <Feed />
-          <Rightbar />
+          <Feed posts={postArr} />
+          <Rightbar user={curUserData} />
         </div>
       </div>
     </div>

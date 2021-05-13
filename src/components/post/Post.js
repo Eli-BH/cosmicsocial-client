@@ -1,14 +1,21 @@
 import { Grade, MoreVert } from "@material-ui/icons";
 import { format } from "timeago.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./post.scss";
 import axios from "axios";
 
-const Post = ({ text, img, createdAt, likes, user }) => {
+const Post = ({ text, img, createdAt, likes, user, id }) => {
   const [postUser, setPostUser] = useState("");
+  const [isLiked, setIsLiked] = useState(false);
+  const [like, setLike] = useState(likes.length);
+  const currentUser = localStorage.getItem("userId");
 
-  useState(() => {
+  useEffect(() => {
+    setIsLiked(likes.includes(currentUser));
+  }, [likes, currentUser]);
+
+  useEffect(() => {
     const fetchUserInfo = async () => {
       try {
         const res = await axios.get(
@@ -20,7 +27,20 @@ const Post = ({ text, img, createdAt, likes, user }) => {
       }
     };
     fetchUserInfo();
-  });
+  }, [user]);
+
+  const handleLikes = async () => {
+    try {
+      axios.put(`http://localhost:3001/api/posts/${id}/like`, {
+        userId: currentUser,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
 
   return (
     <div className="post">
@@ -46,12 +66,9 @@ const Post = ({ text, img, createdAt, likes, user }) => {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <Grade className="likeIcon" />
+            <Grade className="likeIcon" onClick={handleLikes} />
+            <span className="postLikeCounter"> {like} people like it</span>
           </div>
-          <span className="postLikeCounter">
-            {" "}
-            {likes.length} people like it
-          </span>
           <div className="postBottomRight">
             <span className="postCommentText">7 comments</span>
           </div>

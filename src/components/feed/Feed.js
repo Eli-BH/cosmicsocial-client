@@ -9,19 +9,18 @@ const Feed = ({ posts, explore }) => {
       <div className="feedWrapper">
         {!explore && <Share />}
 
-        {posts.length
-          ? posts.map((post) => (
-              <div key={post._id}>
-                <Post
-                  text={post.text}
-                  img={post?.img}
-                  createdAt={post.createdAt}
-                  likes={post.likes}
-                  user={post.userId}
-                />
-              </div>
-            ))
-          : null}
+        {posts.map((post) => (
+          <div key={post._id}>
+            <Post
+              text={post.text}
+              img={post?.img}
+              createdAt={post.createdAt}
+              likes={post.likes}
+              user={post.userId}
+              id={post._id}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

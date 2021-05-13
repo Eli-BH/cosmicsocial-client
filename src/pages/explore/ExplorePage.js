@@ -5,7 +5,7 @@ import Rightbar from "../../components/rightBar/Rightbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./explore.scss";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { exploreSelector, fetchExplore } from "../../slices/explore";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -23,7 +23,11 @@ const ExplorePage = () => {
       <div className="exploreTop">
         <Sidebar />
         {loading && <h1>Loading</h1>}
-        {exploreFeed ? <Feed posts={exploreFeed} explore /> : <h1>Loading</h1>}
+        {exploreFeed.length ? (
+          <Feed posts={exploreFeed} explore />
+        ) : (
+          <h1>Loading</h1>
+        )}
         <Rightbar />
       </div>
       <div className="explorebottom">

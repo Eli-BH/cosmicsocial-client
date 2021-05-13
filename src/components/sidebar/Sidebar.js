@@ -50,10 +50,15 @@ const Sidebar = () => {
             <Chat className="sidebarIcon" />
             <span className="sidebarListItemText">Chat</span>
           </li>
-          <li className="sidebarListItem">
-            <Face className="sidebarIcon" />
-            <span className="sidebarListItemText">Profile</span>
-          </li>
+          <Link
+            to={`/profile/${userData._id}`}
+            style={{ textDecoration: "none" }}
+          >
+            <li className="sidebarListItem">
+              <Face className="sidebarIcon" />
+              <span className="sidebarListItemText">Profile</span>
+            </li>
+          </Link>
         </ul>
         <hr className="sidebarHr" />
         <button className="sidebarButton">Log out</button>

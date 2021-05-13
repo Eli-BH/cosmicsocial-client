@@ -1,7 +1,58 @@
-import { Add } from "@material-ui/icons";
-import "./rightbar.scss";
+import { Add, Remove } from "@material-ui/icons";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 
-const Rightbar = () => {
+import "./rightbar.scss";
+import axios from "axios";
+
+const Rightbar = ({ user }) => {
+  const userId = localStorage.getItem("userId");
+  const profileId = useParams().id;
+  const [friends, setFriends] = useState([]);
+  const [followed, setFollowed] = useState(null);
+
+  useEffect(() => {
+    if (user && user.followers) {
+      setFollowed(user.followers.includes(userId) || false);
+    }
+  }, [user, userId]);
+
+  useEffect(() => {
+    if (user) {
+      const getFollows = async () => {
+        try {
+          const friendsList = await axios.get(
+            `http://localhost:3001/api/users/follows/${user._id}`
+          );
+          setFriends(friendsList.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      getFollows();
+    }
+  }, [user]);
+
+  const handleFollow = async () => {
+    try {
+      if (followed) {
+        await axios.put(
+          `http://localhost:3001/api/users/${user._id}/unfollow`,
+          { userId: userId }
+        );
+      } else {
+        await axios.put(`http://localhost:3001/api/users/${user._id}/follow`, {
+          userId: userId,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    setFollowed(!followed);
+  };
+
   const HomeRightbar = () => {
     return (
       <>
@@ -34,18 +85,22 @@ const Rightbar = () => {
   const ProfileRightBar = () => {
     return (
       <>
-        <button className="rightbarFollowButton">
-          Follow <Add />
-        </button>
+        {userId !== profileId && (
+          <button className="rightbarFollowButton" onClick={handleFollow}>
+            {followed ? "Unfollow" : "Follow"}
+            {followed ? <Remove /> : <Add />}
+          </button>
+        )}
+
         <h4 className="rightBarTitle">User information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">Queens</span>
+            <span className="rightbarInfoValue">{user?.city}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">Brooklyn</span>
+            <span className="rightbarInfoValue">{user?.from}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
@@ -53,136 +108,23 @@ const Rightbar = () => {
           </div>
         </div>
 
-        <h4 className="rightBarTitle">Users friends</h4>
+        <h4 className="rightBarTitle">{`${user.firstName} follows these users`}</h4>
         <div className="rightbarFollowings">
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Tony Stark</span>
-          </div>
+          {friends?.map((friend) => (
+            <Link
+              to={`/profile/${friend._id}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <div className="rightbarFollowing">
+                <img
+                  src={friend.profilePicture}
+                  alt={friend.username}
+                  className="rightbarFollowingImg"
+                />
+                <span className="rightbarFollowingName">{friend.username}</span>
+              </div>
+            </Link>
+          ))}
         </div>
       </>
     );
@@ -191,8 +133,7 @@ const Rightbar = () => {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        <HomeRightbar />
-        {/* <ProfileRightBar /> */}
+        {user ? <ProfileRightBar /> : <HomeRightbar />}
       </div>
     </div>
   );
