@@ -23,7 +23,7 @@ const LikedPage = () => {
     };
 
     getLiked();
-  }, []);
+  }, [userId]);
 
   return (
     <div className="liked">

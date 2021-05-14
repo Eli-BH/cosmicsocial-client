@@ -14,8 +14,6 @@ const Sidebar = () => {
     dispatch(fetchUserData("6096ddfe0aae0ed0c0a515df"));
   }, [dispatch]);
 
-  console.log(userData);
-
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">

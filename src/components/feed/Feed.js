@@ -2,12 +2,11 @@ import Post from "../post/Post";
 import Share from "../share/Share";
 import "./feed.scss";
 
-const Feed = ({ posts, explore }) => {
-  console.log(posts);
+const Feed = ({ posts, explore, user }) => {
   return (
     <div className="feed">
       <div className="feedWrapper">
-        {!explore && <Share />}
+        {!explore && user && <Share />}
 
         {posts?.map((post) => (
           <div key={post._id}>

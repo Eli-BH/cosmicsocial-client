@@ -10,9 +10,16 @@ import { useParams } from "react-router";
 const ProfilePage = () => {
   const [postArr, setPostArr] = useState([]);
   const [curUserData, setCurUserData] = useState({});
+  const [matchUser, setMatchUser] = useState(false);
+
   const curUser = useParams().id;
+  const profileUser = localStorage.getItem("userId");
 
   console.log(curUser);
+
+  useEffect(() => {
+    curUser === profileUser ? setMatchUser(true) : setMatchUser(false);
+  }, [curUser, profileUser]);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -68,7 +75,7 @@ const ProfilePage = () => {
           </div>
         </div>
         <div className="profileRightBottom">
-          <Feed posts={postArr} />
+          <Feed posts={postArr} user={matchUser} />
           <Rightbar user={curUserData} />
         </div>
       </div>

@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 
 const HomePage = () => {
   // localStorage.getItem('userId')
-  const [user, setUser] = useState(localStorage.getItem("userId"));
+  const user = localStorage.getItem("userId");
   const [timeline, setTimeline] = useState([]);
 
   useEffect(() => {
@@ -32,8 +32,6 @@ const HomePage = () => {
 
     fetchTimeline();
   }, [user]);
-
-  console.log(timeline);
 
   return (
     <div className="home">
