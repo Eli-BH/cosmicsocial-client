@@ -9,7 +9,7 @@ const Feed = ({ posts, explore }) => {
       <div className="feedWrapper">
         {!explore && <Share />}
 
-        {posts.map((post) => (
+        {posts?.map((post) => (
           <div key={post._id}>
             <Post
               text={post.text}

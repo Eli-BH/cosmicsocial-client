@@ -6,6 +6,8 @@ import Login from "./pages/login/Login";
 import RegisterPage from "./pages/register/RegisterPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import ExplorePage from "./pages/explore/ExplorePage";
+import LikedPage from "./pages/likedPage/LikedPage";
+import SearchPage from "./pages/search/SearchPage";
 
 const App = () => {
   return (
@@ -26,6 +28,12 @@ const App = () => {
           </Route>
           <Route path="/explore">
             <ExplorePage />
+          </Route>
+          <Route path="/liked">
+            <LikedPage />
+          </Route>
+          <Route path="/search">
+            <SearchPage />
           </Route>
         </Switch>
       </Router>

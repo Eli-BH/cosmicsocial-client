@@ -25,35 +25,38 @@ const Sidebar = () => {
           className="sidebarLogo"
         />
         <ul className="sidebarList">
-          <Link to="/" className="listLink" style={{ textDecoration: "none" }}>
+          <Link to="/" className="listLink">
             <li className="sidebarListItem">
               <Home className="sidebarIcon" />
               <span className="sidebarListItemText">Home</span>
             </li>{" "}
           </Link>
-          <Link to="/explore" style={{ textDecoration: "none" }}>
+          <Link to="/explore">
             <li className="sidebarListItem">
               <Explore className="sidebarIcon" />
               <span className="sidebarListItemText">Explore</span>
             </li>
           </Link>
+          <Link to="/search">
+            <li className="sidebarListItem">
+              <Search className="sidebarIcon" />
+              <span className="sidebarListItemText">Search</span>
+            </li>
+          </Link>
 
-          <li className="sidebarListItem">
-            <Search className="sidebarIcon" />
-            <span className="sidebarListItemText">Search</span>
-          </li>
-          <li className="sidebarListItem">
-            <Grade className="sidebarIcon" />
-            <span className="sidebarListItemText">Liked Posts</span>
-          </li>
+          <Link to={`/liked/${userData._id}`}>
+            <li className="sidebarListItem">
+              <Grade className="sidebarIcon" />
+              <span className="sidebarListItemText">Liked Posts</span>
+            </li>
+          </Link>
+
           <li className="sidebarListItem">
             <Chat className="sidebarIcon" />
             <span className="sidebarListItemText">Chat</span>
           </li>
-          <Link
-            to={`/profile/${userData._id}`}
-            style={{ textDecoration: "none" }}
-          >
+
+          <Link to={`/profile/${userData._id}`}>
             <li className="sidebarListItem">
               <Face className="sidebarIcon" />
               <span className="sidebarListItemText">Profile</span>

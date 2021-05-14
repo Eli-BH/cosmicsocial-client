@@ -1,1 +1,17 @@
 @import "../../sass/colors";
+
+.liked {
+  width: 100%;
+  color: $light;
+  font-family: "Roboto", sans-serif;
+  .likedTop {
+    display: flex;
+
+    .likedFeed {
+      flex: 6;
+      height: 100vh;
+      overflow-y: scroll;
+      background-color: $dark;
+    }
+  }
+}
