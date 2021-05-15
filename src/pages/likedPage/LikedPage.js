@@ -16,7 +16,7 @@ const LikedPage = () => {
   useEffect(() => {
     const getLiked = async () => {
       const { data } = await axios.get(
-        "http://localhost:3001/api/posts/liked/" + userId
+        " https://cosmicsocialserver.herokuapp.com/api/posts/liked/" + userId
       );
 
       setLikedPosts(data);

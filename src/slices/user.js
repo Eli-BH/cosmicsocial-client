@@ -44,7 +44,7 @@ export function fetchUserData(userId) {
 
     try {
       const { data } = await axios.get(
-        "http://localhost:3001/api/users?userId=" + userId
+        "https://cosmicsocialserver.herokuapp.com/api/users?userId=" + userId
       );
       dispatch(getUserDataSuccess(data));
     } catch (error) {

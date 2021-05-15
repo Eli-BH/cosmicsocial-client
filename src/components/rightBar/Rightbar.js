@@ -23,7 +23,7 @@ const Rightbar = ({ user }) => {
       const getFollows = async () => {
         try {
           const friendsList = await axios.get(
-            `http://localhost:3001/api/users/follows/${user._id}`
+            `https://cosmicsocialserver.herokuapp.com/api/users/follows/${user._id}`
           );
           setFriends(friendsList.data);
         } catch (error) {
@@ -52,13 +52,16 @@ const Rightbar = ({ user }) => {
     try {
       if (followed) {
         await axios.put(
-          `http://localhost:3001/api/users/${user._id}/unfollow`,
+          `${process.env.REACT_APP_LOCALHOST}/users/${user._id}/unfollow`,
           { userId: userId }
         );
       } else {
-        await axios.put(`http://localhost:3001/api/users/${user._id}/follow`, {
-          userId: userId,
-        });
+        await axios.put(
+          `${process.env.REACT_APP_LOCALHOST}/api/users/${user._id}/follow`,
+          {
+            userId: userId,
+          }
+        );
       }
     } catch (error) {
       console.log(error);
@@ -123,6 +126,7 @@ const Rightbar = ({ user }) => {
         <div className="rightbarFollowings">
           {friends?.map((friend) => (
             <Link
+              key={friend._id}
               to={`/profile/${friend._id}`}
               style={{ textDecoration: "none", color: "black" }}
             >

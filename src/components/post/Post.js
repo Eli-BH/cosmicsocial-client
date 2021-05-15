@@ -25,7 +25,7 @@ const Post = ({ text, img, createdAt, likes, user, id }) => {
     const fetchUserInfo = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3001/api/users?userId=" + user
+          "https://cosmicsocialserver.herokuapp.com/api/users?userId=" + user
         );
         setPostUser(res.data);
       } catch (error) {
@@ -37,9 +37,12 @@ const Post = ({ text, img, createdAt, likes, user, id }) => {
 
   const handleLikes = async () => {
     try {
-      axios.put(`http://localhost:3001/api/posts/${id}/like`, {
-        userId: currentUser,
-      });
+      axios.put(
+        `https://cosmicsocialserver.herokuapp.com/api/posts/${id}/like`,
+        {
+          userId: currentUser,
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +54,7 @@ const Post = ({ text, img, createdAt, likes, user, id }) => {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `http://localhost:3001/api/posts/${id}/${currentUser}`
+        `https://cosmicsocialserver.herokuapp.com/api/posts/${id}/${currentUser}`
       );
       setShow(false);
       window.location.reload();

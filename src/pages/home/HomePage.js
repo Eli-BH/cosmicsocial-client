@@ -7,17 +7,21 @@ import MobileSidebar from "../../components/mobilesidebar/MobileSidebar";
 import axios from "axios";
 
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getUserDataSelector } from "../../slices/user";
 
 const HomePage = () => {
   // localStorage.getItem('userId')
-  const user = localStorage.getItem("userId");
+
   const [timeline, setTimeline] = useState([]);
+  const { userData } = useSelector(getUserDataSelector);
 
   useEffect(() => {
     const fetchTimeline = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3001/api/posts/timeline/" + user
+          " https://cosmicsocialserver.herokuapp.com/api/posts/timeline/" +
+            userData._id
         );
 
         setTimeline(
@@ -31,9 +35,9 @@ const HomePage = () => {
     };
 
     fetchTimeline();
-  }, [user]);
+  }, [userData._id]);
 
-  return (
+  return userData ? (
     <div className="home">
       <MobileSidebar />
       <div className="hometop">
@@ -45,6 +49,8 @@ const HomePage = () => {
         <Bottombar />
       </div>
     </div>
+  ) : (
+    <h1>Loading</h1>
   );
 };
 

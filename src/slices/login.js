@@ -47,7 +47,7 @@ export function authLogin(formData) {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3001/api/auth/login",
+        "https://cosmicsocialserver.herokuapp.com/api/auth/login",
         formData
       );
 

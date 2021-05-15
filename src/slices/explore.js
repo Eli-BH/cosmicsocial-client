@@ -45,7 +45,7 @@ export function fetchExplore() {
     dispatch(explore());
     try {
       const { data } = await axios.get(
-        "http://localhost:3001/api/posts/explore"
+        "https://cosmicsocialserver.herokuapp.com/api/posts/explore"
       );
       dispatch(exploreSuccess(data));
     } catch (error) {

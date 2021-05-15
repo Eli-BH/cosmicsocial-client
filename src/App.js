@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import HomePage from "./pages/home/HomePage";
 import Login from "./pages/login/Login";
@@ -15,25 +10,31 @@ import LikedPage from "./pages/likedPage/LikedPage";
 import SearchPage from "./pages/search/SearchPage";
 
 const App = () => {
-  const user = localStorage.getItem("userId");
-
   return (
     <div>
       <Router>
         <Switch>
           <Route exact path="/">
-            {user ? <HomePage /> : <RegisterPage />}
+            <HomePage />
           </Route>
-          <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
+          <Route path="/login">
+            <Login />
+          </Route>
           <Route path="/register">
-            {user ? <Redirect to="/" /> : <RegisterPage />}
+            <RegisterPage />
           </Route>
           <Route path="/profile/:id">
-            {user ? <ProfilePage /> : <Login />}
+            <ProfilePage />
           </Route>
-          <Route path="/explore">{user ? <ExplorePage /> : <Login />}</Route>
-          <Route path="/liked">{user ? <LikedPage /> : <Login />}</Route>
-          <Route path="/search">{user ? <SearchPage /> : <Login />}</Route>
+          <Route path="/explore">
+            <ExplorePage />
+          </Route>
+          <Route path="/liked">
+            <LikedPage />
+          </Route>
+          <Route path="/search">
+            <SearchPage />
+          </Route>
         </Switch>
       </Router>
     </div>

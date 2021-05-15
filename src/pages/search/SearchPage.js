@@ -17,7 +17,9 @@ const SearchPage = () => {
   useEffect(() => {
     const fetchAllUsers = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/api/users/all");
+        const { data } = await axios.get(
+          "https://cosmicsocialserver.herokuapp.com/api/users/all"
+        );
         setAllUsers(data);
       } catch (error) {
         console.log(error);
@@ -30,7 +32,7 @@ const SearchPage = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `http://localhost:3001/api/users/search?username=${searchQuery.current.value}`
+        `https://cosmicsocialserver.herokuapp.com/api/users/search?username=${searchQuery.current.value}`
       );
       setFoundUser(data);
     } catch (error) {

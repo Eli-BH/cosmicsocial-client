@@ -3,12 +3,13 @@ import "./login.scss";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authLogin, authLoginSelector } from "../../slices/login";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Login() {
   const email = useRef();
   const password = useRef();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const { authData } = useSelector(authLoginSelector);
 
@@ -30,6 +31,8 @@ function Login() {
 
     email.current.value = "";
     password.current.value = "";
+
+    history.push("/");
   };
   console.log(authData);
   return (

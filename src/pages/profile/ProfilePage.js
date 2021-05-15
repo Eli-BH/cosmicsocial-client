@@ -35,10 +35,15 @@ const ProfilePage = () => {
     const getPosts = async () => {
       try {
         const res = await axios(
-          "http://localhost:3001/api/posts/profile/" + curUser
+          "https://cosmicsocialserver.herokuapp.com/api/posts/profile/" +
+            curUser
         );
 
-        setPostArr(res.data);
+        setPostArr(
+          res.data.sort((p1, p2) => {
+            return new Date(p2.createdAt) - new Date(p1.createdAt);
+          })
+        );
       } catch (error) {
         console.log(error);
       }
@@ -51,7 +56,7 @@ const ProfilePage = () => {
     const getUserData = async () => {
       try {
         const { data } = await axios(
-          `http://localhost:3001/api/users?userId=${curUser}`
+          `https://cosmicsocialserver.herokuapp.com/api/users?userId=${curUser}`
         );
         setCurUserData(data);
       } catch (error) {
@@ -79,7 +84,7 @@ const ProfilePage = () => {
 
       formData.append("image", file);
       const res = await axios.post(
-        "http://localhost:3001/api/users/picture/" + curUser,
+        "https://cosmicsocialserver.herokuapp.com/api/users/picture/" + curUser,
         formData,
         {
           headers: {
@@ -100,7 +105,7 @@ const ProfilePage = () => {
 
       formData.append("image", file);
       const res = await axios.post(
-        "http://localhost:3001/api/users/cover/" + curUser,
+        "https://cosmicsocialserver.herokuapp.com/api/users/cover/" + curUser,
         formData,
         {
           headers: {
@@ -130,7 +135,7 @@ const ProfilePage = () => {
       userId: curUser,
     };
     const res = await axios.put(
-      "http://localhost:3001/api/users/" + curUser,
+      "https://cosmicsocialserver.herokuapp.com/api/users/" + curUser,
       editInfo
     );
     console.log(res.data);

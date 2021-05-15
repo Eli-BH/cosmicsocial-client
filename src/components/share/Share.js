@@ -24,7 +24,7 @@ const Share = () => {
       const sendPost = async () => {
         try {
           const res = await axios.post(
-            "http://localhost:3001/api/posts",
+            "https://cosmicsocialserver.herokuapp.com/api/posts",
             newPost
           );
           console.log(res.data);
@@ -43,7 +43,7 @@ const Share = () => {
       const sendPicPost = async () => {
         try {
           const res = await axios.post(
-            "http://localhost:3001/api/posts/picture",
+            "https://cosmicsocialserver.herokuapp.com/api/posts/picture",
             formData,
             {
               headers: {

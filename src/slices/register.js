@@ -44,7 +44,7 @@ export function authRegister(formData) {
     dispatch(register());
     try {
       const { data } = await axios.post(
-        "http://localhost:3001/api/auth/register",
+        "https://cosmicsocialserver.herokuapp.com/api/auth/register",
         formData
       );
 

@@ -1,6 +1,6 @@
 import "./sidebar.scss";
 import { Explore, Face, Grade, Home, Search } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -8,11 +8,17 @@ import { getUserDataSelector, fetchUserData } from "../../slices/user";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { userData } = useSelector(getUserDataSelector);
 
   useEffect(() => {
     dispatch(fetchUserData("6096ddfe0aae0ed0c0a515df"));
   }, [dispatch]);
+
+  const logout = () => {
+    localStorage.clear();
+    history.push("/login");
+  };
 
   return (
     <div className="sidebar">
@@ -63,7 +69,9 @@ const Sidebar = () => {
           </Link>
         </ul>
         <hr className="sidebarHr" />
-        <button className="sidebarButton">Log out</button>
+        <button className="sidebarButton" onClick={logout}>
+          Log out
+        </button>
       </div>
     </div>
   );
