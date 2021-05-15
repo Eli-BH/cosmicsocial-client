@@ -9,13 +9,18 @@ import ExplorePage from "./pages/explore/ExplorePage";
 import LikedPage from "./pages/likedPage/LikedPage";
 import SearchPage from "./pages/search/SearchPage";
 
+import { useSelector } from "react-redux";
+import { authLoginSelector } from "./slices/login";
+
 const App = () => {
+  const { authData } = useSelector(authLoginSelector);
+
   return (
     <div>
       <Router>
         <Switch>
           <Route exact path="/">
-            <HomePage />
+            {authData ? <HomePage /> : <RegisterPage />}
           </Route>
           <Route path="/login">
             <Login />
