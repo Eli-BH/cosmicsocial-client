@@ -14,7 +14,7 @@ const HomePage = () => {
   // localStorage.getItem('userId')
 
   const [timeline, setTimeline] = useState([]);
-  const { userData } = useSelector(getUserDataSelector);
+  const { userData, loading } = useSelector(getUserDataSelector);
 
   useEffect(() => {
     const fetchTimeline = async () => {
@@ -35,7 +35,7 @@ const HomePage = () => {
     };
 
     fetchTimeline();
-  }, [userData._id]);
+  }, [userData]);
 
   return userData ? (
     <div className="home">
@@ -50,7 +50,7 @@ const HomePage = () => {
       </div>
     </div>
   ) : (
-    <h1>Loading</h1>
+    loading && <h1>Loading</h1>
   );
 };
 

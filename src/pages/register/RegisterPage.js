@@ -3,11 +3,13 @@ import { useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { authRegister, authRegisterSelector } from "../../slices/register";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const { authData } = useSelector(authRegisterSelector);
+
+  const history = useHistory();
 
   const email = useRef();
   const firstName = useRef();
@@ -36,6 +38,7 @@ const RegisterPage = () => {
     } else {
       password.current.setCustomValidity("Passwords do not match!");
     }
+    history.push("/home");
   };
 
   console.log(authData);

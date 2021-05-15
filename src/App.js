@@ -14,14 +14,12 @@ import { authLoginSelector } from "./slices/login";
 
 const App = () => {
   const { authData } = useSelector(authLoginSelector);
+  console.log(authData);
 
   return (
     <div>
       <Router>
         <Switch>
-          <Route exact path="/">
-            {authData ? <HomePage /> : <RegisterPage />}
-          </Route>
           <Route path="/login">
             <Login />
           </Route>
@@ -39,6 +37,9 @@ const App = () => {
           </Route>
           <Route path="/search">
             <SearchPage />
+          </Route>
+          <Route exact path="/">
+            {authData.length ? <HomePage /> : <RegisterPage />}
           </Route>
         </Switch>
       </Router>

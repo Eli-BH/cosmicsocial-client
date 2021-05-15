@@ -24,9 +24,6 @@ const ProfilePage = () => {
   const curUser = useParams().id;
   const profileUser = localStorage.getItem("userId");
 
-  console.log(curUserData);
-  console.log(file);
-
   useEffect(() => {
     curUser === profileUser ? setMatchUser(true) : setMatchUser(false);
   }, [curUser, profileUser]);

@@ -1,8 +1,8 @@
 import "./login.scss";
 
 import { useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { authLogin, authLoginSelector } from "../../slices/login";
+import { useDispatch } from "react-redux";
+import { authLogin } from "../../slices/login";
 import { Link, useHistory } from "react-router-dom";
 
 function Login() {
@@ -10,8 +10,6 @@ function Login() {
   const password = useRef();
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const { authData } = useSelector(authLoginSelector);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +32,7 @@ function Login() {
 
     history.push("/");
   };
-  console.log(authData);
+
   return (
     <div className="login">
       <div className="loginWrapper">

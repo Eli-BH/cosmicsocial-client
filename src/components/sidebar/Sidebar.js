@@ -10,10 +10,11 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { userData } = useSelector(getUserDataSelector);
+  const user = localStorage.getItem("userId");
 
   useEffect(() => {
-    dispatch(fetchUserData("6096ddfe0aae0ed0c0a515df"));
-  }, [dispatch]);
+    dispatch(fetchUserData(user));
+  }, [dispatch, user]);
 
   const logout = () => {
     localStorage.clear();
