@@ -38,7 +38,7 @@ const HomePage = () => {
       <MobileSidebar />
       <div className="hometop">
         <Sidebar />
-        {timeline && <Feed posts={timeline} />}
+        {timeline && <Feed posts={timeline} user />}
         <Rightbar />
       </div>
       <div className="homebottom">

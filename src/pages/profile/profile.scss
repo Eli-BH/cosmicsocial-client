@@ -16,6 +16,23 @@
   height: 320px;
   position: relative;
   background-color: $dark;
+
+  .profilePicButton {
+    background-color: $dark;
+    color: $light;
+    font-size: 12px;
+    border-radius: 5px;
+    border: solid 1px $mid;
+    margin: 5px 10px;
+    padding: 2px;
+    cursor: pointer;
+    &:hover {
+      transform: scale(0.98);
+    }
+    &:active {
+      transform: scale(0.96);
+    }
+  }
 }
 
 .profileCoverImg {
@@ -46,6 +63,14 @@
   background-color: $dark;
   padding-bottom: 40px;
   border-bottom: solid 1px $pitch;
+  .editButton {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: $pitch;
+    color: $light;
+    font-weight: 600;
+    border: 1px solid $mid;
+  }
 }
 .profileInfoName {
   font-size: 24px;
@@ -100,4 +125,54 @@
   height: 100px;
   object-fit: cover;
   border-radius: 5px;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  input {
+    border-radius: 15px;
+    padding: 5px;
+  }
+}
+
+.modal-content {
+  background-color: $dark;
+  color: $light;
+  .close {
+    span {
+      color: $light;
+    }
+  }
+
+  input {
+    &:focus {
+      outline: none;
+    }
+  }
+  .modal-footer {
+    .modalBottomButton {
+      padding: 5px;
+      background-color: $mid;
+      color: $pitch;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+    .modalBottomButtonClose {
+      padding: 5px;
+      background-color: $danger;
+      color: $pitch;
+      border: none;
+      border-radius: 5px;
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
 }

@@ -1,15 +1,21 @@
 import { Grade, MoreVert } from "@material-ui/icons";
 import { format } from "timeago.js";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import "./post.scss";
 import axios from "axios";
+import Overlay from "react-bootstrap/Overlay";
+import Tooltip from "react-bootstrap/Tooltip";
+import Button from "react-bootstrap/Button";
 
 const Post = ({ text, img, createdAt, likes, user, id }) => {
   const [postUser, setPostUser] = useState("");
   const [isLiked, setIsLiked] = useState(false);
   const [like, setLike] = useState(likes.length);
+  const [show, setShow] = useState(false);
   const currentUser = localStorage.getItem("userId");
+
+  const target = useRef(null);
 
   useEffect(() => {
     setIsLiked(likes.includes(currentUser));
@@ -42,6 +48,18 @@ const Post = ({ text, img, createdAt, likes, user, id }) => {
     setIsLiked(!isLiked);
   };
 
+  const handleDelete = async () => {
+    try {
+      await axios.delete(
+        `http://localhost:3001/api/posts/${id}/${currentUser}`
+      );
+      setShow(false);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="post">
       <div className="postWrapper">
@@ -55,9 +73,31 @@ const Post = ({ text, img, createdAt, likes, user, id }) => {
             <span className="postUsername">{postUser?.username}</span>
             <span className="postDate">{format(createdAt)}</span>
           </div>
-          <div className="postTopRight">
-            <MoreVert />
-          </div>
+
+          {currentUser === postUser._id && (
+            <div
+              className="postTopRight"
+              ref={target}
+              onClick={() => {
+                setShow(!show);
+              }}
+            >
+              <MoreVert />
+              <Overlay target={target.current} show={show} placement="right">
+                {(props) => (
+                  <Tooltip id="overlay-example" {...props}>
+                    <Button
+                      variant="danger"
+                      size="small"
+                      onClick={handleDelete}
+                    >
+                      Delete
+                    </Button>
+                  </Tooltip>
+                )}
+              </Overlay>
+            </div>
+          )}
         </div>
         <div className="postCenter">
           <span className="postText">{text}</span>

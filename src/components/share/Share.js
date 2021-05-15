@@ -1,37 +1,66 @@
 import "./share.scss";
 import axios from "axios";
-import { EmojiEmotions, Label, PermMedia, Room } from "@material-ui/icons";
-import { useRef } from "react";
+import { Cancel, PermMedia } from "@material-ui/icons";
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { getUserDataSelector } from "../../slices/user";
 
 const Share = () => {
   const { userData } = useSelector(getUserDataSelector);
+  const [file, setFile] = useState(null);
 
   const text = useRef();
 
   const handleSubmit = (e) => {
-    const newPost = {
-      userId: userData._id,
-      text: text.current.value,
-    };
-
     e.preventDefault();
+    if (file === null) {
+      const newPost = {
+        userId: userData._id,
+        text: text.current.value,
+      };
 
-    const sendPost = async () => {
-      try {
-        const res = await axios.post(
-          "http://localhost:3001/api/posts",
-          newPost
-        );
-        console.log(res.data);
-        window.location.reload();
-      } catch (error) {
-        console.log(error);
-      }
-    };
+      e.preventDefault();
 
-    sendPost();
+      const sendPost = async () => {
+        try {
+          const res = await axios.post(
+            "http://localhost:3001/api/posts",
+            newPost
+          );
+          console.log(res.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      sendPost();
+    } else {
+      let formData = new FormData();
+      formData.append("image", file);
+      formData.append("text", text.current.value || "");
+      formData.append("userId", userData._id);
+
+      const sendPicPost = async () => {
+        try {
+          const res = await axios.post(
+            "http://localhost:3001/api/posts/picture",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
+          console.log(res.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      sendPicPost();
+    }
+
+    window.location.reload();
   };
 
   return (
@@ -43,6 +72,7 @@ const Share = () => {
             alt={userData.username}
             className="shareProfileImg"
           />
+
           <textarea
             type="text"
             className="shareInput"
@@ -56,29 +86,30 @@ const Share = () => {
 
         <form className="shareBottom" onSubmit={handleSubmit}>
           <div className="shareOptions">
-            <label htmlFor="file" className="shareOption">
+            <label htmlFor="myfile">
               <PermMedia htmlColor="tomato" className="shareIcon" />
-              <span className="shareOptionText">Photo or Video</span>
+              <span className="shareOptionText">Photo </span>
               <input
                 type="file"
-                id="file"
-                accept=".png,.jpeg,.jpg"
-                // onChange={(e) => setFile(e.target.files[0])}
+                id="myfile"
+                name="myfile"
+                onChange={(e) => setFile(e.target.files[0])}
                 style={{ display: "none" }}
               />
             </label>
-            <div className="shareOption">
-              <Label htmlColor="blue" className="shareIcon" />
-              <span className="shareOptionText">Tag</span>
-            </div>
-            <div className="shareOption">
-              <Room htmlColor="green" className="shareIcon" />
-              <span className="shareOptionText">Location</span>
-            </div>
-            <div className="shareOption">
-              <EmojiEmotions htmlColor="goldenrod" className="shareIcon" />
-              <span className="shareOptionText">Feeling</span>
-            </div>
+            {file && (
+              <div className="shareImgContainer">
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt=""
+                  className="shareImg"
+                />
+                <Cancel
+                  className="shareCancelImg"
+                  onClick={() => setFile(null)}
+                />
+              </div>
+            )}
           </div>
 
           <button className="shareButton" type="submit">

@@ -1,5 +1,5 @@
 import "./sidebar.scss";
-import { Chat, Explore, Face, Grade, Home, Search } from "@material-ui/icons";
+import { Explore, Face, Grade, Home, Search } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -23,38 +23,39 @@ const Sidebar = () => {
           className="sidebarLogo"
         />
         <ul className="sidebarList">
-          <Link to="/" className="listLink">
+          <Link to="/" className="listLink" style={{ textDecoration: "none" }}>
             <li className="sidebarListItem">
               <Home className="sidebarIcon" />
               <span className="sidebarListItemText">Home</span>
             </li>{" "}
           </Link>
-          <Link to="/explore">
+          <Link to="/explore" style={{ textDecoration: "none" }}>
             <li className="sidebarListItem">
               <Explore className="sidebarIcon" />
               <span className="sidebarListItemText">Explore</span>
             </li>
           </Link>
-          <Link to="/search">
+          <Link to="/search" style={{ textDecoration: "none" }}>
             <li className="sidebarListItem">
               <Search className="sidebarIcon" />
               <span className="sidebarListItemText">Search</span>
             </li>
           </Link>
 
-          <Link to={`/liked/${userData._id}`}>
+          <Link
+            to={`/liked/${userData._id}`}
+            style={{ textDecoration: "none" }}
+          >
             <li className="sidebarListItem">
               <Grade className="sidebarIcon" />
               <span className="sidebarListItemText">Liked Posts</span>
             </li>
           </Link>
 
-          <li className="sidebarListItem">
-            <Chat className="sidebarIcon" />
-            <span className="sidebarListItemText">Chat</span>
-          </li>
-
-          <Link to={`/profile/${userData._id}`}>
+          <Link
+            to={`/profile/${userData._id}`}
+            style={{ textDecoration: "none" }}
+          >
             <li className="sidebarListItem">
               <Face className="sidebarIcon" />
               <span className="sidebarListItemText">Profile</span>

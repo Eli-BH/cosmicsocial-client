@@ -97,30 +97,54 @@
     }
   }
 
-  //for home feed
-  .birthdayContainer {
-    display: flex;
-    align-items: center;
-    .birthdayImg {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
+  .homeRightbarContent {
+    //for home feed
+    .birthdayContainer {
+      display: flex;
+      align-items: center;
+      .birthdayImg {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      .birthdayText {
+        font-weight: 300;
+        font-size: 15px;
+      }
+    }
+    .rightbarAd {
+      width: 100%;
+      border-radius: 10px;
+      margin: 30px 0;
+    }
+    .rightbarTitle {
+      margin-bottom: 20px;
+      font-size: 26px;
+      margin-top: 40px;
+    }
+    .rightbarPicTitle {
+      margin-top: 100px;
+      font-size: 24px;
     }
 
-    .birthdayText {
-      font-weight: 300;
-      font-size: 15px;
+    .rightbarJoke {
+      font-size: 30px;
+    }
+
+    .rightbarPic {
+      margin-top: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .rightbarImgPic {
+        width: 500px;
+        height: auto;
+        object-fit: contain;
+      }
     }
   }
-  .rightbarAd {
-    width: 100%;
-    border-radius: 10px;
-    margin: 30px 0;
-  }
-  .rightbarTitle {
-    margin-bottom: 20px;
-    font-size: 26px;
-  }
+
   .rightbarFriendList {
     padding: 0;
     margin: 0;

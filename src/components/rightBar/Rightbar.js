@@ -10,6 +10,7 @@ const Rightbar = ({ user }) => {
   const profileId = useParams().id;
   const [friends, setFriends] = useState([]);
   const [followed, setFollowed] = useState(null);
+  const [joke, setJoke] = useState("");
 
   useEffect(() => {
     if (user && user.followers) {
@@ -34,6 +35,19 @@ const Rightbar = ({ user }) => {
     }
   }, [user]);
 
+  useEffect(() => {
+    const getJoke = async () => {
+      const { data } = await axios.get("https://icanhazdadjoke.com/", {
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      setJoke(data.joke);
+    };
+
+    getJoke();
+  }, []);
+
   const handleFollow = async () => {
     try {
       if (followed) {
@@ -55,30 +69,27 @@ const Rightbar = ({ user }) => {
 
   const HomeRightbar = () => {
     return (
-      <>
+      <div className="homeRightbarContent">
         <div className="birthdayContainer">
-          <img
-            src="http://source.unsplash.com/random"
-            alt=""
-            className="birthdayImg"
-          />
           <span className="birthdayText">
             <b>Peter Parker</b> and <b>3 other friends</b> have birthdays today.
           </span>
         </div>
 
-        <h4 className="rightbarTitle">Online Friends</h4>
-        <ul className="rightbarFriendsList">
-          <li>Guy</li>
-          <li>Guy</li>
-          <li>Guy</li>
-          <li>Guy</li>
-          <li>Guy</li>
-          <li>Guy</li>
-          <li>Guy</li>
-          <li>Guy</li>
-        </ul>
-      </>
+        <h4 className="rightbarTitle">Have a Joke:</h4>
+        <div className="rightbarJoke">
+          <h3>{joke || "Joke Coming soon"}</h3>
+        </div>
+
+        <h4 className="rightbarPicTitle">Check out this Picture</h4>
+        <div className="rightbarPic">
+          <img
+            src="https://source.unsplash.com/random"
+            alt="randomImg"
+            className="rightbarImgPic"
+          />
+        </div>
+      </div>
     );
   };
 
@@ -103,8 +114,8 @@ const Rightbar = ({ user }) => {
             <span className="rightbarInfoValue">{user?.from}</span>
           </div>
           <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue">Single</span>
+            <span className="rightbarInfoKey">Age:</span>
+            <span className="rightbarInfoValue">25</span>
           </div>
         </div>
 
