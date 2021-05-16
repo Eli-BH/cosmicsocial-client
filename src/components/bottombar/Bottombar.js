@@ -1,13 +1,22 @@
 import { Home, Mail, Notifications, Search } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 import "./bottombar.scss";
 
 const Bottombar = () => {
   return (
     <div className="bottomBar">
-      <Home className="bottomBarIcon" />
-      <Search className="bottomBarIcon" />
-      <Notifications className="bottomBarIcon" />
-      <Mail className="bottomBarIcon" />
+      <Link to="/">
+        <Home className="bottomBarIcon" />
+      </Link>
+      <Link to="/search">
+        <Search className="bottomBarIcon" />
+      </Link>
+      <Link to="/">
+        <Notifications className="bottomBarIcon" />
+      </Link>
+      <Link to="/">
+        <Mail className="bottomBarIcon" />
+      </Link>
     </div>
   );
 };

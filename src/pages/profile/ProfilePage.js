@@ -8,6 +8,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Cancel } from "@material-ui/icons";
+import Bottombar from "../../components/bottombar/Bottombar";
 
 const ProfilePage = () => {
   const [postArr, setPostArr] = useState([]);
@@ -184,6 +185,7 @@ const ProfilePage = () => {
         <div className="profileRightBottom">
           <Feed posts={postArr} user={matchUser} />
           <Rightbar user={curUserData} />
+          <Bottombar />
         </div>
       </div>
       <Modal show={show} onHide={handleClose} size="lg" centered>
